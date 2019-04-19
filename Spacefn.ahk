@@ -1,4 +1,35 @@
-﻿;SpaceFn
+;SpaceFn
+getSelText()
+{
+    ClipboardOld:=ClipboardAll
+    Clipboard:=""
+    SendInput, ^{insert} 
+    ClipWait,0.1
+    selText:=Clipboard
+    Clipboard:=ClipboardOld
+    return selText
+}
+GetObjJScript()
+{
+   if !FileExist(ComObjFile := A_ScriptDir "\JS.wsc")
+      FileAppend,
+         (LTrim
+            <component>
+            <public><method name='eval'/></public>
+            <script language='JScript'></script>
+            </component>
+         ), % ComObjFile
+   Return ComObjGet("script:" . ComObjFile)
+}
+getJSEval(text)
+{
+sc := GetObjJScript()
+
+
+return sc.Eval(text)
+
+}
+
 #inputlevel,2
 $Space::
     SetMouseDelay -1
@@ -11,12 +42,12 @@ $Space::
     return
 
 #inputlevel,1
-F24 & i::Up
-F24 & k::Down
-F24 & j::Left
-F24 & l::Right
-F24 & u::Home
-F24 & o::End
+F24 & e::Up
+F24 & d::Down
+F24 & s::Left
+F24 & f::Right
+F24 & a::Home
+F24 & z::End
 F24 & n::PgUp
 F24 & m::PgDn
 
@@ -32,11 +63,8 @@ F24 & 9::F9
 F24 & 0::F10
 F24 & -::F11
 F24 & =::F12
-
-F24 & Enter::^Enter
-
-;Ctrl+S 重加载
-; ~^s::
-; sleep 500
-; Reload
-; return
+F24 & tab::
+    output:=getJSEval(getSelText())
+    Send {Blind}{Text}%output%
+return
+;F24 & Enter::^Enter
