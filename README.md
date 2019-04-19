@@ -5,12 +5,12 @@
 |Key|Function|
 |:---:|:---:|
 |Quick click `Space`|`Space`|
-|`Space`+`i`|`Up Arrow`|
-|`Space`+`k`|`Down Arrow`|
-|`Space`+`j`|`Left Arrow`|
-|`Space`+`l`|`Right Arrow`|
-|`Space`+`u`|`Home`|
-|`Space`+`o`|`End`|
+|`Space`+`e`|`Up Arrow`|
+|`Space`+`d`|`Down Arrow`|
+|`Space`+`s`|`Left Arrow`|
+|`Space`+`f`|`Right Arrow`|
+|`Space`+`a`|`Home`|
+|`Space`+`z`|`End`|
 |`Space`+`n`|`Page Up`|
 |`Space`+`m`|`Page Down`|
 |`Space`+`Enter`|`Ctrl`+`Enter`|
@@ -26,11 +26,12 @@
 |`Space`+`0`|`F10`|
 |`Space`+`-`|`F11`|
 |`Space`+`=`|`F12`|
-
+|`Space`+`Tab`|Eval Selected Text as JScript SRC and replaced with its result|
 # Source Code
 - [Spacefn.ahk](https://github.com/OhYee/SpaceFn/blob/master/Spacefn.ahk)
 
 # Release
+- [Release 0.0.2]Add Space+Tab to Use JScript to Eval the Selected Text to result
 - [Release 0.0.1](https://github.com/OhYee/SpaceFn/releases/tag/0.0.1)
 
 # LICENSE
