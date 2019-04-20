@@ -9,6 +9,16 @@ getSelText()
     Clipboard:=ClipboardOld
     return selText
 }
+getLineText()
+{
+    ClipboardOld:=ClipboardAll
+    Clipboard:=""
+    SendInput, {end}+{home}^{insert}
+    ClipWait,0.1
+    selText:=Clipboard
+    Clipboard:=ClipboardOld
+    return selText
+}
 GetObjJScript()
 {
    if !FileExist(ComObjFile := A_ScriptDir "\JS.wsc")
@@ -64,7 +74,10 @@ F24 & 0::F10
 F24 & -::F11
 F24 & =::F12
 F24 & tab::
-    output:=getJSEval(getSelText())
+    comObjError(0)
+    selText:=getSelText()
+    selText:=selText==""?getLineText():selText
+    output:=getJSEval(selText)
     Send {Blind}{Text}%output%
 return
 ;F24 & Enter::^Enter
