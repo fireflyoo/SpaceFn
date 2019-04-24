@@ -31,7 +31,7 @@
 - [Spacefn.ahk](https://github.com/OhYee/SpaceFn/blob/master/Spacefn.ahk)
 
 # Release
-- [Release 0.0.3]Add Capslock as LCtrl,and Semicolon as RCtrl.
+- [Release 0.0.3]Add Capslock as LCtrl(Single Press as Esc),and Semicolon as RCtrl.
 - [Release 0.0.2]Add Space+Tab to Use JScript to Eval the Selected Text to result
 - [Release 0.0.1](https://github.com/OhYee/SpaceFn/releases/tag/0.0.1)
 
