@@ -47,9 +47,10 @@ $Space::
     KeyWait, Space
     Send {Blind}{F24 up}
     ; MsgBox, %A_ThisHotkey%-%A_TimeSinceThisHotkey%
-    if(A_ThisHotkey="$Space" and A_TimeSinceThisHotkey<300)
+    if(A_ThisHotkey="$Space" and A_TimeSinceThisHotkey<1000)
         Send {Blind}{Space DownR}
     return
+
 
 #inputlevel,1
 F24 & e::Up
@@ -77,7 +78,31 @@ F24 & tab::
     comObjError(0)
     selText:=getSelText()
     selText:=selText==""?getLineText():selText
-    output:=getJSEval(selText)
+    output:=RTrim(Format("{}",getJSEval(selText)),"0")
     Send {Blind}{Text}%output%
 return
-;F24 & Enter::^Enter
+#inputlevel,0
+*CapsLock::
+	Send {LControl down}
+	Return
+*CapsLock up::
+	Send {LControl Up}
+	if (A_PriorKey=="CapsLock"){
+		if (A_TimeSincePriorHotkey < 1000)
+			Suspend On
+			Send, {Esc}
+			Suspend Off
+	}
+	Return
+*SC027::
+	Send {RControl down}
+	Return
+*SC027 up::
+	Send {RControl Up}
+	if (A_PriorKey==";"){
+		if (A_TimeSincePriorHotkey < 1000)
+			Suspend On
+			Send, `;
+			Suspend Off
+	}
+	Return
