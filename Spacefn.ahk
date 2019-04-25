@@ -83,26 +83,19 @@ F24 & tab::
 return
 #inputlevel,0
 *CapsLock::
-	Send {LControl down}
+	Send {Blind}{LControl down}
 	Return
 *CapsLock up::
-	Send {LControl Up}
+	Send {Blind}{LControl Up}
 	if (A_PriorKey=="CapsLock"){
 		if (A_TimeSincePriorHotkey < 1000)
 			Suspend On
-			Send, {Esc}
+			Send, {Blind}{Esc}
 			Suspend Off
 	}
 	Return
-*SC027::
-	Send {RControl down}
-	Return
-*SC027 up::
-	Send {RControl Up}
-	if (A_PriorKey==";"){
-		if (A_TimeSincePriorHotkey < 1000)
-			Suspend On
-			Send, `;
-			Suspend Off
-	}
-	Return
+
+;#-->Win
+;!-->Alt
+;^-->Ctrl
+;+-->Shift
