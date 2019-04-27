@@ -78,7 +78,10 @@ F24 & tab::
     comObjError(0)
     selText:=getSelText()
     selText:=selText==""?getLineText():selText
-    output:=RTrim(Format("{}",getJSEval(selText)),"0")
+    output:=Format("{}",getJSEval(selText))
+;    MsgBox % output~="^\d+\.\d+$"
+    output:=output~="^\d+\.\d+$" ? RTrim(output,"0") : output
+
     Send {Blind}{Text}%output%
 return
 #inputlevel,0
