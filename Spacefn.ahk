@@ -79,8 +79,7 @@ F24 & tab::
     selText:=getSelText()
     selText:=selText==""?getLineText():selText
     output:=Format("{}",getJSEval(selText))
-;    MsgBox % output~="^\d+\.\d+$"
-    output:=output~="^\d+\.\d+$" ? RTrim(output,"0") : output
+    output:=output~="^\d+\.\d+$" ? RTrim(RTrim(output,"0"),".") : output
 
     Send {Blind}{Text}%output%
 return
